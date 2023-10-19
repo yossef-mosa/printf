@@ -8,11 +8,11 @@
 
 int print_char(va_list pa)
 {
-	char x;
+char x;
 
-	x = va_arg(pa, int);
-	_putchar(x);
-	return (1);
+x = va_arg(pa, int);
+_putchar(x);
+return (1);
 }
 
 /**
@@ -23,21 +23,21 @@ int print_char(va_list pa)
 
 int print_string(va_list pa)
 {
-	char *str;
-	int i = 0;
+char *str;
+int i = 0;
 
-	str = va_arg(pa, char *);
+str = va_arg(pa, char *);
 
-	if (str == NULL)
-		str = "(null)";
+if (str == NULL)
+str = "(null)";
 
-	while (str[i])
-	{
-		_putchar(str[i]);
-		i++;
-	}
+while (str[i])
+{
+_putchar(str[i]);
+i++;
+}
 
-	return (i);
+return (i);
 }
 
 /**
@@ -48,9 +48,9 @@ int print_string(va_list pa)
 
 int print_percentage(va_list pa)
 {
-	(void) pa;
-	_putchar('%');
-	return (1);
+(void) pa;
+_putchar('%');
+return (1);
 }
 
 /**
@@ -65,40 +65,40 @@ int _printf(const char *format, ...)
 va_list pa;
 int i = 0, count = 0;
 
-	va_start(pa, format);
-	
+va_start(pa, format);
 
-	if (format == NULL)
-		return (-1);
 
-	while (format[i])
-	{
-		if (format[i] != '%')
-		{
-			_putchar(format[i]);
-			count++;
-		}
-		else
-		{
-			switch (format[i + 1])
-			{
-				case 'c':
-					count += print_char(pa);
-					break;
-				case 's':
-					count += print_string(pa);
-					break;
-				case '%':
-					count += print_percentage(pa);
-					break;
-				default:
-				return (-1);
-			}
-			i++;
-		}
-		i++;
-	}
+if (format == NULL)
+return (-1);
 
-	va_end(pa);
-	return (count);
+while (format[i])
+{
+if (format[i] != '%')
+{
+_putchar(format[i]);
+count++;
+}
+else
+{
+switch (format[i + 1])
+{
+case 'c':
+count += print_char(pa);
+break;
+case 's':
+count += print_string(pa);
+break;
+case '%':
+count += print_percentage(pa);
+break;
+default:
+return (-1);
+}
+i++;
+}
+i++;
+}
+
+va_end(pa);
+return (count);
 }
