@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <limits.h>
 int _putchar(char c);
-int print_i(int value);
+int print_i(int value)
 void print_b(char buffer[], int *buff_ind);
 
 int _printf(const char *format, ...);
